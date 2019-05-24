@@ -27,7 +27,7 @@ const messageReceived = (event) => {
             return sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
         }
 
-        case messageText.macth(/^(\d{2,2})(\/)(\d{2,2})\2(\d{4}|\d{4})$/) !== null: {
+        case moment(messageText.toString(), 'MM/DD/YYYY',true).isValid(): {
             return sendingButton(senderID, "do you wants to know how many days till his next birtday?", [{
                             type: 'text',
                             title: 'Yes',
