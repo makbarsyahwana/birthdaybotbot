@@ -7,12 +7,14 @@ const postbackReceived = (event) => {
     var payload = event.postback.payload;
     switch(payload)
     {
-        case 'yes':
+        case 'yes': {
             let n = ""
-            sendingText(senderID, `there are ${n} days left until your next birthday`)
+            return sendingText(senderID, `there are ${n} days left until your next birthday`)
+        }
         
-        case 'no':
+        case 'no': {
             sendingText(senderID, "Goodbay 👋")
+        }
         
         default :
             var msg = "Implement logic for this Postback";

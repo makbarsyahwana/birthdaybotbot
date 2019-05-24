@@ -18,36 +18,39 @@ const messageReceived = (event) => {
         // and send back the example. Otherwise, just echo the text we received.
         switch (messageText) { 
         case 'hi' :
-        case 'halo':       
-            sendingText(senderID, "Hi, please type your first name")
+        case 'halo': {
+            return sendingText(senderID, "Hi, please type your first name")
+        }
 
-        case messageText.match(/[^-\s]/g) && messageText.length > 4 :
-            sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
+        case messageText.match(/[^-\s]/g) && messageText.length > 4 : {
+            return sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
+        }
 
-        case moment(messageText, 'MM/DD/YYYY',true).isValid() :
-            sendingButton(senderID, [{
-                    type: 'text',
-                    title: 'Yes',
-                    payload: 'yes'
-                },{
-                    type: 'text',
-                    title: 'No',
-                    payload: 'no'
-                }
-            ])
+        case moment(messageText, 'MM/DD/YYYY',true).isValid() : {
+            return sendingButton(senderID, [{
+                            type: 'text',
+                            title: 'Yes',
+                            payload: 'yes'
+                        },{
+                            type: 'text',
+                            title: 'No',
+                            payload: 'no'
+                        }
+                    ])
+        }
 
         case 'yeah':
         case 'yes':
-        case 'yup':
+        case 'yup': {
             let n = ""
-            sendingText(senderID, `there are ${n} days left until your next birthday`)
-        break;
+            return sendingText(senderID, `there are ${n} days left until your next birthday`)
+        }
 
         case 'no':
         case 'nah':
-        case 'nope':
-            sendingText(senderID, "Goodbay 👋")
-        break;
+        case 'nope': {
+            return sendingText(senderID, "Goodbay 👋")
+        }
     
         default :
             sendingText(senderID,"Hi");
