@@ -52,3 +52,7 @@ app.post('/webhook', (req, res) => {
         res.sendStatus(200)
     }
 })
+
+app.get('/test', (req, res) => {
+    res.send('test work')
+})
