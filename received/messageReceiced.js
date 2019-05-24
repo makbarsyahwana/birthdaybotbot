@@ -13,7 +13,7 @@ const messageReceived = (event) => {
     const messageText = message.text;
     const messageAttachments = message.attachments;
     if (messageText) {
-        console.log(moment(messageText, 'MM/DD/YYYY',true).isValid())
+        console.log(moment(messageText.toString(), 'MM/DD/YYYY',true).isValid())
         // If we receive a text message, check to see if it matches a keyword
         // and send back the example. Otherwise, just echo the text we received.
         switch (messageText) { 
@@ -26,8 +26,8 @@ const messageReceived = (event) => {
             return sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
         }
 
-        case moment(messageText, 'MM/DD/YYYY',true).isValid() : {
-            return sendingButton(senderID, [{
+        case moment(messageText.toString(), 'MM/DD/YYYY',true).isValid() : {
+            return sendingButton(senderID, "user wants to know how many days till his next birtday?", [{
                             type: 'text',
                             title: 'Yes',
                             payload: 'yes'
