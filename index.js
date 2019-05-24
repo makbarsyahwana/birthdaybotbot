@@ -14,8 +14,8 @@ app.get('/', function (req, res) {
     res.send("Hello , I'm a birthdayBot")
 });
 
-app.listen(8071, function() {
-    console.log('server running at : 8071')
+app.listen(3000, function() {
+    console.log('server running at : 3000')
 });
 
 const FACEBOOK_VERIFY_CODE = 'SMARTBOT';
