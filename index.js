@@ -17,3 +17,12 @@ app.get('/', function (req, res) {
 app.listen(8071, function() {
     console.log('server running at : 8071')
 });
+
+const FACEBOOK_VERIFY_CODE = 'SMARTBOT';
+
+app.get('/webhook', function (req, res) {
+    if (req.query['hub.verify_token'] === FACEBOOK_VERIFY_CODE) {
+        res.send(req.query['hub.challenge'])
+    }
+    res.send('Error : wrong token');
+})
