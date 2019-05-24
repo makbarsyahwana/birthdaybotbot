@@ -13,7 +13,7 @@ const messageReceived = (event) => {
     const messageText = message.text;
     const messageAttachments = message.attachments;
     if (messageText) {
-        console.log(moment(messageText.toString(), 'MM/DD/YYYY',true).isValid())
+        //console.log(moment(messageText.toString(), 'MM/DD/YYYY',true).isValid())
         console.log(typeof messageText)
         // If we receive a text message, check to see if it matches a keyword
         // and send back the example. Otherwise, just echo the text we received.
