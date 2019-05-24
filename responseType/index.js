@@ -1,6 +1,6 @@
 const sendAPI = require('../facebookAPI')
 
-sendText = (recipientId, text) => {
+const sendText = (recipientId, text) => {
     var messageData = {
         recipient: {
             id: recipientId
@@ -13,7 +13,7 @@ sendText = (recipientId, text) => {
     sendAPI(messageData)
 }
 
-sendButton = (recipientId, text, message) => {
+const sendButton = (recipientId, text, message) => {
     var messageData = { 
         recipient: {
             id: recipientId

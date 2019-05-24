@@ -1,7 +1,7 @@
 const sendingText = require('../responseType').sendText
 const sendingButton = require('../responseType').sendButton
 
-messageReceived = (event) => {
+const messageReceived = (event) => {
     const senderID = event.sender.id;
     const recipientID = event.recipient.id;
     const timeOfMessage = event.timestamp;

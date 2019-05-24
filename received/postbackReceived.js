@@ -1,6 +1,6 @@
 const sendingText = require('../responseType').sendText
 
-postbackReceived = (event) => {
+const postbackReceived = (event) => {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
