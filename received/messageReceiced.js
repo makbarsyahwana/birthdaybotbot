@@ -27,7 +27,7 @@ const messageReceived = (event) => {
         }
 
         case moment(messageText.toString(), 'MM/DD/YYYY',true).isValid() : {
-            return sendingButton(senderID, "user wants to know how many days till his next birtday?", [{
+            return sendingButton(senderID, "do you wants to know how many days till his next birtday?", [{
                             type: 'text',
                             title: 'Yes',
                             payload: 'yes'
