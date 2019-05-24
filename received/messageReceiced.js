@@ -17,13 +17,14 @@ messageReceived = (event) => {
         // and send back the example. Otherwise, just echo the text we received.
         switch (messageText) { 
         case 'hi' :
-        case 'halo':
-            let message = "Hi, please type your first name";         
-            sendingText(senderID,msg); 
-            break;
+        case 'halo':       
+            sendingText(senderID, "Hi, please type your first name")
+        break;
+
         case messageText.match(/[^-\s]/g) && messageText.length > 4 :
-            let message = "please tell your brith day in MM/DD/YYYY format"
-            sendingText(senderID, msg)
+            sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
+        break;
+
         case moment(messageText, 'MM/DD/YYYY',true).isValid() :
             sendingButton(senderID, [{
                     type: 'text',
@@ -35,22 +36,20 @@ messageReceived = (event) => {
                     payload: 'no'
                 }
             ])
-
+        break;
 
         case 'yeah':
         case 'yes':
         case 'yup':
             let n = ""
-            let message = `there are ${n} days left until your next birthday`
-            sendingText(senderID, message)
-
+            sendingText(senderID, `there are ${n} days left until your next birthday`)
+        break;
 
         case 'no':
         case 'nah':
         case 'nope':
-            let message = "Goodbay 👋"
-            sendingText(senderID, message)
-            
+            sendingText(senderID, "Goodbay 👋")
+        break;
     
         default :
             sendingText(senderID,"Hi");
