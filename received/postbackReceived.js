@@ -10,11 +10,9 @@ const postbackReceived = (event) => {
         case 'yes':
             let n = ""
             sendingText(senderID, `there are ${n} days left until your next birthday`)
-        break;
         
         case 'no':
             sendingText(senderID, "Goodbay 👋")
-        break;
         
         default :
             var msg = "Implement logic for this Postback";

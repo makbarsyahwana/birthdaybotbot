@@ -19,11 +19,9 @@ const messageReceived = (event) => {
         case 'hi' :
         case 'halo':       
             sendingText(senderID, "Hi, please type your first name")
-        break;
 
         case messageText.match(/[^-\s]/g) && messageText.length > 4 :
             sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
-        break;
 
         case moment(messageText, 'MM/DD/YYYY',true).isValid() :
             sendingButton(senderID, [{
@@ -36,7 +34,6 @@ const messageReceived = (event) => {
                     payload: 'no'
                 }
             ])
-        break;
 
         case 'yeah':
         case 'yes':
