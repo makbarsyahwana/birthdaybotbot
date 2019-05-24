@@ -27,7 +27,7 @@ const messageReceived = (event) => {
             return sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
         }
 
-        case moment(messageText.toString(), 'MM/DD/YYYY',true).isValid(): {
+        case new Date(messageText) != 'Invalid Date': {
             return sendingButton(senderID, "do you wants to know how many days till his next birtday?", [{
                             type: 'text',
                             title: 'Yes',
