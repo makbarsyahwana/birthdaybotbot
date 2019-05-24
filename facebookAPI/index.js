@@ -1,5 +1,5 @@
 const request = require('request')
-const PAGE_ACCESS_TOKEN  = 'SMARTBOT'
+const PAGE_ACCESS_TOKEN  = 'SMARTBOEAALoWzcpQKkBAFrmEPM3MvcvhAsFtrZA3pKXwIVxipKWvUnJJDDjhCIB95ZBdV5dKcIoAodiHBsGP0e0HjHJcu1hA4DYJA7xwD2DN9osV8fAbC65oztP9jA0NvkkcLaNPWoefMInVgf8aTGZBrqCmm4BdmZCCn1d3WNKFV6W3gZDZDT'
 
 const sendAPI = (messageData) => {
     request(
