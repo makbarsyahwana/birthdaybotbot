@@ -31,7 +31,7 @@ const messageReceived = (event) => {
         //console.log(moment(messageText.toString(), 'MM/DD/YYYY',true).isValid())
         console.log(typeof messageText)
         console.log(senderID)
-        if (messageText.match(/[^-\s]/g) && messageText.length >= 4 && !isDateFormat) {
+        if (messageText.match(/[^-\s]/g) && messageText.length > 4 && !isDateFormat) {
             sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
         }
         if (isDateFormat) {
