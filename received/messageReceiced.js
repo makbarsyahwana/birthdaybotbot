@@ -3,6 +3,7 @@ const sendingButton = require('../responseType').sendButton
 const moment = require('moment')
 
 const birthdayCounting = (messageText) => {
+    console.log(messageText)
     const birthdayDate = new Date(messageText)
     const birthDate = birthdayDate.getDate()
     const birthMonth = birthdayDate.getMonth()
