@@ -1,5 +1,7 @@
 const sendingText = require('../responseType').sendText
 const sendingButton = require('../responseType').sendButton
+const senderCol = require('../models/sender')
+const chatMessagesCol = require('../models/chatMessages')
 const moment = require('moment')
 
 const birthdayCounting = (messageText) => {
@@ -27,8 +29,45 @@ const messageReceived = (event) => {
     const messageId = message.mid;
     const messageText = message.text;
     const messageAttachments = message.attachments;
+    let hasOneSenderID = false
+
+    const saveMessages = () => {
+        if (hasOneSenderID) {
+            chatMessagesCol.create({
+                sender_id: senderID,
+                text: messageText
+            }).then(newMessage => {
+                console.log(`success save ${newMessage} to database`)
+            }).catch(error => {
+                console.log('error:', error)
+            })
+        } else {
+            senderCol.find({
+                sender_id: senderID
+            }).then(foundOne => {
+                if (foundOne) {
+                    hasOneSenderID = true
+                } else {
+                    senderCol.create({
+                        sender_id: senderID
+                    }).then(newSender => {
+                        if (newSender) {
+                            hasOneSenderID = true
+                            saveMessages()
+                        }
+                    }).catch(error => {
+                        console.log('error:', error)
+                    })
+                }
+            }).catch(error => {
+                console.log('error:', error)
+            })
+        }
+    }
 
     if (messageText) {
+
+        saveMessages()
 
         const isDateFormat = moment(messageText, 'MM/DD/YYYY', true).isValid()
         let birthDate

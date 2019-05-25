@@ -1,10 +1,17 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+const mongoose = require('mongoose')
 const app = express()
 
 const messageReceived = require('./received/messageReceiced')
 const postbackReceived = require('./received/postbackReceived')
+
+// MongoDB connection
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds261096.mlab.com:61096/birthdaybot', { useNewUrlParser: true })
+mongoose.connection.on("open", () => {
+    console.log("Connected to mongo server")
+})
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
