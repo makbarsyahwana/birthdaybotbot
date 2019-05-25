@@ -19,7 +19,7 @@ const messageReceived = (event) => {
         if (messageText.match(/[^-\s]/g) && messageText.length > 4) {
             sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
         }
-        if (moment(messageText, 'MM/DD/YYYY', true).isValid) {
+        if (moment(messageText, 'MM/DD/YYYY', true).isValid()) {
             sendingButton(senderID, "do you wants to know how many days till his next birtday?", [{
                 content_type: 'text',
                 title: 'yes',
@@ -52,9 +52,6 @@ const messageReceived = (event) => {
             return sendingText(senderID, "Goodbay 👋")
         }
     
-        default :
-            sendingText(senderID,"Hi");
-        break;
         }
     }
 }
