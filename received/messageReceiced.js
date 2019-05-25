@@ -41,7 +41,7 @@ const messageReceived = (event) => {
             }).catch(error => {
                 console.log('error:', error)
             })
-        } else {
+        } else if(hasOneSenderID === false) {
             senderCol.find({
                 sender_id: senderID
             }).then(foundOne => {
@@ -63,6 +63,7 @@ const messageReceived = (event) => {
                 console.log('error:', error)
             })
         }
+        console.log(hasOneSenderID)
     }
 
     if (messageText) {
