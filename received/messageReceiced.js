@@ -43,8 +43,8 @@ const messageReceived = (event) => {
         case 'yeah':
         case 'yes':
         case 'yup': {
-            let n = ""
-            return sendingText(senderID, `there are ${n} days left until your next birthday`)
+            let days = moment.diff(messageText, 'days') 
+            return sendingText(senderID, `there are ${days} days left until your next birthday`)
         }
 
         case 'no':
