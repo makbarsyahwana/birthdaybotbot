@@ -12,6 +12,8 @@ const birthdayCounting = (messageText) => {
     const dayTime = 24 * 60 * 60 * 1000;
     const nextBirthday = new Date(new Date().getFullYear() + isThisYear, birthMonth, birthDate)
     const currentDate = new Date()
+    console.log(nextBirthday)
+    console.log(currentDate)
     const dayToBirthday = Math.round(Math.abs((currentDate.getTime() - nextBirthday.getTime()) / (dayTime)))
     return dayToBirthday !== 365 ? `${dayToBirthday} days until your birthday`: 'Happy Birthday'
 }
