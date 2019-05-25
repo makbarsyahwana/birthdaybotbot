@@ -2,6 +2,20 @@ const sendingText = require('../responseType').sendText
 const sendingButton = require('../responseType').sendButton
 const moment = require('moment')
 
+const birthdayCounting = (messageText) => {
+    const birthdayDate = new Date(messageText)
+    const birthDate = birthdayDate.getDate()
+    const birthMonth = birthdayDate.getMonth()
+    const currentBirthDate = new Date(new Date().getFullYear(), birthMonth, birthDay).setHours(23, 59,59)
+
+    const isThisYear = currentBirthDate > Date.now() ? 0 : 1
+    const dayTime = 24 * 60 * 60 * 1000;
+    const nextBirthday = new Date(new Date().getFullYear() + isThisYear, birthMonth, birthDate)
+    const currentDate = new Date()
+    const dayToBirthday = Math.round(Math.abs((currentDate.getTime() - nextBirthday.getTime()) / (dayTime)))
+    return dayToBirthday !== 365 ? `${dayToBirthday} days until your birthday`: 'Happy Birthday'
+}
+
 const messageReceived = (event) => {
     const senderID = event.sender.id;
     const recipientID = event.recipient.id;
@@ -17,7 +31,7 @@ const messageReceived = (event) => {
         //console.log(moment(messageText.toString(), 'MM/DD/YYYY',true).isValid())
         console.log(typeof messageText)
         console.log(senderID)
-        if (messageText.match(/[^-\s]/g) && messageText.length > 4 && !isDateFormat) {
+        if (messageText.match(/[^-\s]/g) && messageText.length >= 4 && !isDateFormat) {
             sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
         }
         if (isDateFormat) {
@@ -43,8 +57,7 @@ const messageReceived = (event) => {
         case 'yeah':
         case 'yes':
         case 'yup': {
-            let days = moment().diff(messageText, 'days') 
-            return sendingText(senderID, `there are ${days} days left until your next birthday`)
+            return sendingText(senderID, birthdayCounting(messageText))
         }
 
         case 'no':
