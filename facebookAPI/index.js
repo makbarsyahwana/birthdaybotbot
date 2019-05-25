@@ -1,5 +1,6 @@
 const request = require('request')
-const PAGE_ACCESS_TOKEN  = 'EAAEFZBKM8zusBACLT4RIiAbajkmlz5Xnhlu6oRl6pLtG8wn9y3Ku2dXfbYhPe5gBE3lHB6cgmDZAgjACarZCZAWNpe7NqTGtIe31d0ibv9wt5hxEsPIzZC7ZByfRnOwLz56kPMLhWeqzm08xR6VWQmGmZBaRK1DBNra1Mek7zqKUQZDZD'
+const config = require('../config')
+const PAGE_ACCESS_TOKEN  = config.pageAccessToken
 
 const sendAPI = (messageData) => {
     request(

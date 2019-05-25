@@ -22,13 +22,13 @@ const birthdayCounting = (messageText) => {
 }
 
 const messageReceived = (event) => {
-    const senderID = event.sender.id;
-    const recipientID = event.recipient.id;
-    const timeOfMessage = event.timestamp;
-    const message = event.message;
-    const messageId = message.mid;
-    const messageText = message.text;
-    const messageAttachments = message.attachments;
+    const senderID = event.sender.id
+    const recipientID = event.recipient.id
+    const timeOfMessage = event.timestamp
+    const message = event.message
+    const messageId = message.mid
+    const messageText = message.text
+    const messageAttachments = message.attachments
     let hasOneSenderID = false
 
     const saveMessages = () => {
