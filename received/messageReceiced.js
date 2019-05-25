@@ -27,12 +27,14 @@ const messageReceived = (event) => {
     const messageText = message.text;
     const messageAttachments = message.attachments;
 
-    const isDateFormat = moment(messageText, 'MM/DD/YYYY', true).isValid()
-
     if (messageText) {
-        //console.log(moment(messageText.toString(), 'MM/DD/YYYY',true).isValid())
+
+        const isDateFormat = moment(messageText, 'MM/DD/YYYY', true).isValid()
+        let birthdate
+
         console.log(typeof messageText)
         console.log(senderID)
+
         if (messageText.match(/[^-\s]/g) && messageText.length > 4 && !isDateFormat) {
             sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
         }
@@ -47,6 +49,9 @@ const messageReceived = (event) => {
                 payload: 'no'
             }]
             )
+
+            birthdate = messageText
+
         }
         // If we receive a text message, check to see if it matches a keyword
         // and send back the example. Otherwise, just echo the text we received.
@@ -59,7 +64,7 @@ const messageReceived = (event) => {
         case 'yeah':
         case 'yes':
         case 'yup': {
-            return sendingText(senderID, birthdayCounting(messageText))
+            return sendingText(senderID, birthdayCounting(birthdate))
         }
 
         case 'no':
