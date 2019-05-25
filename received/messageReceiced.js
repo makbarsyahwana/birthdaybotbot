@@ -16,29 +16,27 @@ const messageReceived = (event) => {
         //console.log(moment(messageText.toString(), 'MM/DD/YYYY',true).isValid())
         console.log(typeof messageText)
         console.log(senderID)
+        if (messageText.match(/[^-\s]/g) && messageText.length > 4) {
+            sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
+        }
+        if (moment(messageText, 'MM/DD/YYYY', true).isValid) {
+            sendingButton(senderID, "do you wants to know how many days till his next birtday?", [{
+                content_type: 'text',
+                title: 'yes',
+                payload: 'yes'
+            },{
+                content_type: 'text',
+                title: 'yo',
+                payload: 'no'
+            }]
+            )
+        }
         // If we receive a text message, check to see if it matches a keyword
         // and send back the example. Otherwise, just echo the text we received.
         switch (messageText) { 
         case 'hi' :
         case 'halo': {
             return sendingText(senderID, "Hi, please type your first name")
-        }
-
-        case messageText.match(/[^-\s]/g) && messageText.length > 4 : {
-            return sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
-        }
-
-        case true: {
-            return sendingButton(senderID, "do you wants to know how many days till his next birtday?", [{
-                            content_type: 'text',
-                            title: 'yes',
-                            payload: 'yes'
-                        },{
-                            content_type: 'text',
-                            title: 'yo',
-                            payload: 'no'
-                        }]
-                    )
         }
 
         case 'yeah':
