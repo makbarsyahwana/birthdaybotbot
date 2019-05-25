@@ -30,8 +30,8 @@ const messageReceived = (event) => {
 
     if (messageText) {
 
-        let birthdate = {}
         const isDateFormat = moment(messageText, 'MM/DD/YYYY', true).isValid()
+        let birthDate
 
         console.log(typeof messageText)
         console.log(senderID)
@@ -51,7 +51,7 @@ const messageReceived = (event) => {
             }]
             )
 
-            birthdate.push(messageText)
+            birthdate = messageText
 
         }
         // If we receive a text message, check to see if it matches a keyword
@@ -65,7 +65,8 @@ const messageReceived = (event) => {
         case 'yeah':
         case 'yes':
         case 'yup': {
-            return sendingText(senderID, birthdayCounting())
+            console.log(birthdate)
+            return sendingText(senderID, birthdayCounting(birthdate))
         }
 
         case 'no':
