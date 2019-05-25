@@ -6,7 +6,7 @@ const birthdayCounting = (messageText) => {
     const birthdayDate = new Date(messageText)
     const birthDate = birthdayDate.getDate()
     const birthMonth = birthdayDate.getMonth()
-    const currentBirthDate = new Date(new Date().getFullYear(), birthMonth, birthDay).setHours(23, 59,59)
+    const currentBirthDate = new Date(new Date().getFullYear(), birthMonth, birthDate).setHours(23, 59,59)
 
     const isThisYear = currentBirthDate > Date.now() ? 0 : 1
     const dayTime = 24 * 60 * 60 * 1000;
