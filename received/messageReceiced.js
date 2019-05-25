@@ -26,7 +26,7 @@ const messageReceived = (event) => {
                 payload: 'yes'
             },{
                 content_type: 'text',
-                title: 'yo',
+                title: 'no',
                 payload: 'no'
             }]
             )
