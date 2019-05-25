@@ -18,7 +18,7 @@ const postbackReceived = (event) => {
         
         default :
             var msg = "Implement logic for this Postback";
-            sendingText(senderID,msg); 
+            sendingText(senderID, msg); 
         break;
     }
 
