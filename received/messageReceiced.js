@@ -7,19 +7,20 @@ const messageReceived = (event) => {
     const recipientID = event.recipient.id;
     const timeOfMessage = event.timestamp;
     const message = event.message;
-    
     const messageId = message.mid;
-    
     const messageText = message.text;
     const messageAttachments = message.attachments;
+
+    const isDateFormat = moment(messageText, 'MM/DD/YYYY', true).isValid()
+
     if (messageText) {
         //console.log(moment(messageText.toString(), 'MM/DD/YYYY',true).isValid())
         console.log(typeof messageText)
         console.log(senderID)
-        if (messageText.match(/[^-\s]/g) && messageText.length > 4) {
+        if (messageText.match(/[^-\s]/g) && messageText.length > 4 && isDateFormat) {
             sendingText(senderID, "please tell your brith day in MM/DD/YYYY format")
         }
-        if (moment(messageText, 'MM/DD/YYYY', true).isValid()) {
+        if (isDateFormat) {
             sendingButton(senderID, "do you wants to know how many days till his next birtday?", [{
                 content_type: 'text',
                 title: 'yes',
