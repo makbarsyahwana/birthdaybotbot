@@ -21,6 +21,8 @@ through changing the `config.js` file
 messanger bot is all running under `/webhook` api endpoint 
 
 ```
+'config.js file'
+
 module.exports = {
     userDB: YOUR_DATABASE_USERNAME,
     passwordDB: YOUR_DB_PASSWORD,
