@@ -36,6 +36,7 @@ const messageReceived = (event) => {
         senderCol.find({
             sender_id: senderID
         }).then(foundOne => {
+            console.log('sender:', foundOne)
             if (foundOne) {
                 chatMessagesCol.create({
                     sender_id: senderID,
