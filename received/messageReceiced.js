@@ -32,37 +32,43 @@ const messageReceived = (event) => {
     let hasOneSenderID = false
 
     const saveMessages = () => {
-        if (hasOneSenderID) {
-            chatMessagesCol.create({
-                sender_id: senderID,
-                text: messageText
-            }).then(newMessage => {
-                console.log(`success save ${newMessage} to database`)
-            }).catch(error => {
-                console.log('error:', error)
-            })
-        } else if(hasOneSenderID === false) {
-            senderCol.find({
-                sender_id: senderID
-            }).then(foundOne => {
-                if (foundOne) {
-                    hasOneSenderID = true
-                } else {
-                    senderCol.create({
-                        sender_id: senderID
-                    }).then(newSender => {
-                        if (newSender) {
-                            hasOneSenderID = true
-                            saveMessages()
-                        }
-                    }).catch(error => {
-                        console.log('error:', error)
-                    })
-                }
-            }).catch(error => {
-                console.log('error:', error)
-            })
-        }
+
+        senderCol.find({
+            sender_id: senderID
+        }).then(foundOne => {
+            if (foundOne) {
+                chatMessagesCol.create({
+                    sender_id: senderID,
+                    text: messageText
+                }).then(newMessage => {
+                    console.log(`success save ${newMessage} to database`)
+                }).catch(error => {
+                    console.log('error:', error)
+                })
+            } else {
+                senderCol.create({
+                    sender_id: senderID
+                }).then(newSender => {
+                    console.log(`success save ${newSender} to database`)
+                    if (newSender) {
+                        chatMessagesCol.create({
+                            sender_id: senderID,
+                            text: messageText
+                        }).then(newMessage => {
+                            console.log(`success save ${newMessage} to database`)
+                        }).catch(error => {
+                            console.log('error:', error)
+                        })
+                    }
+                }).catch(error => {
+                    console.log('error:', error)
+                })
+            }
+        }).catch(error => {
+            console.log('error:', error)
+        })
+
+
         console.log(hasOneSenderID)
     }
 
