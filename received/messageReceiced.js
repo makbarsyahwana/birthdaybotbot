@@ -33,13 +33,14 @@ const messageReceived = (event) => {
 
     const saveMessages = () => {
 
-        senderCol.find({
-            sender_id: senderID
+        senderCol.findOne({
+            messanger_id: senderID
         }).then(foundOne => {
             console.log('sender:', foundOne)
             if (foundOne) {
                 chatMessagesCol.create({
-                    sender_id: senderID,
+                    senderId: foundOne._id,
+                    messanger_id: senderID,
                     text: messageText
                 }).then(newMessage => {
                     console.log(`success save ${newMessage} to database`)
@@ -48,12 +49,13 @@ const messageReceived = (event) => {
                 })
             } else {
                 senderCol.create({
-                    sender_id: senderID
+                    messanger_id: senderID
                 }).then(newSender => {
                     console.log(`success save ${newSender} to database`)
                     if (newSender) {
                         chatMessagesCol.create({
-                            sender_id: senderID,
+                            senderId: newSender._id,
+                            messanger_id: senderID,
                             text: messageText
                         }).then(newMessage => {
                             console.log(`success save ${newMessage} to database`)
@@ -68,9 +70,6 @@ const messageReceived = (event) => {
         }).catch(error => {
             console.log('error:', error)
         })
-
-
-        console.log(hasOneSenderID)
     }
 
     if (messageText) {

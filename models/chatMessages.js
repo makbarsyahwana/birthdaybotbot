@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 
 const ChatMessages = new mongoose.Schema({
-    sender_id: Number,
+    senderId: [{ type: Schema.Types.ObjectId, ref: 'Sender' }],
+    messanger_id: Number,
     text: String,
     created_at: { type: Date, default: Date.now }
 })
