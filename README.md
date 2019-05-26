@@ -4,7 +4,7 @@
 ### Follow this step to running the app in local server
 
 1. download or clone this repo
-  `$ git clone https://github.com/makbarsyahwana/birthdaybotbot`
+  `$ git clone https://github.com/makbarsyahwana/birthdaybotbot.git`
 
 2. Install all nesecary node package
     `$ npm install`
