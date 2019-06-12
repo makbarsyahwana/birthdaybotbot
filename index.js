@@ -40,14 +40,9 @@ app.get('/webhook', (req, res) => {
 
 app.post('/webhook', (req, res) => {
     const { object, entry } = req.body
-
+    
     if(object === 'page'){
-
-
         entry.map(item => {
-            const pageID = item.id
-            const eventTime = item.time
-
             item.messaging.map(event => {
                 if (event.message){
                     messageReceived(event)
@@ -56,7 +51,6 @@ app.post('/webhook', (req, res) => {
                 }
             })
         })
-
         res.sendStatus(200)
     }
 })
