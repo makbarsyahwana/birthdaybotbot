@@ -35,18 +35,21 @@ const messageReceived = (event) => {
         // and send back the example. Otherwise, just echo the text we received.
         switch (messageText) { 
         case 'hi' :
+        case 'Hi':
         case 'halo': {
             return sendingText(senderID, "Hi, please type your first name")
         }
 
         case 'yeah':
         case 'yes':
+        case 'Yes':
         case 'yup': {
             return sendingText(senderID, countBirthday(birthdate))
         }
 
         case 'no':
         case 'nah':
+        case 'No':
         case 'nope': {
             return sendingText(senderID, "Goodbay 👋")
         }
